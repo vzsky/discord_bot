@@ -12,5 +12,7 @@ bot.on("message", (user, userID, channelID, message, evt) => {
 
     if (cmd === "ping") ping(bot, channelID);
     if (cmd === "pong") pong(bot, channelID);
+    if (cmd === "bo")   bo(bot, channelID);
+    if (cmd === "ba")   ba(bot, channelID);
   }
 });
