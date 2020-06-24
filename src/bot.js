@@ -1,7 +1,7 @@
 const { bot, logger } = require("./setup");
 const { ping } = require("./basic");
 
-let CMD = "!";
+const CMD = "!";
 
 bot.on("message", (user, userID, channelID, message, evt) => {
   if (message.substring(0, 1) == CMD) {

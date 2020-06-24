@@ -1,6 +1,8 @@
 const Discord = require("discord.io");
 const winston = require("winston");
 
+require("dotenv").config();
+
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.simple(),
@@ -11,7 +13,7 @@ const logger = winston.createLogger({
 });
 
 const bot = new Discord.Client({
-  token: process.env.BOT_TOKEN,
+  token: process.env.TOKEN,
   autorun: true,
 });
 
