@@ -1,5 +1,5 @@
 const { bot, logger } = require("./setup");
-const { ping, pong, bo, ba } = require("./basic");
+const { ping, pong, bo, ba, version } = require("./basic");
 
 const CMD = "!";
 
@@ -11,8 +11,10 @@ bot.on("message", (user, userID, channelID, message, evt) => {
     args = args.splice(1);
 
     if (cmd.toLowerCase() === "ping") ping(cmd, bot, channelID);
-    if (cmd.toLowerCase() === "pong") pong(cmd, bot, channelID);
-    if (cmd === "bo") bo(bot, channelID);
-    if (cmd === "ba") ba(bot, channelID);
+    else if (cmd.toLowerCase() === "pong") pong(cmd, bot, channelID);
+    else if (cmd.toLowerCase() === "bo") bo(bot, channelID);
+    else if (cmd.toLowerCase() === "ba") ba(bot, channelID);
+    else if (cmd.toLowerCase() == "v" || cmd.toLowerCase() == "-v")
+      version(bot, channelID);
   }
 });
