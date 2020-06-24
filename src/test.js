@@ -1,4 +1,3 @@
-const { realpath } = require("fs");
 const {} = require("./basic");
 
 const readline = require("readline").createInterface({

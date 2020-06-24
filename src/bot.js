@@ -9,17 +9,17 @@ bot.on("message", (user, userID, channelID, message, evt) => {
     logger.info(user + "#" + userID + " said " + message);
 
     var args = message.substring(1).split(" ");
-    var cmd = args[0].toLowerCase();
+    var cmd = args[0];
     args = args.splice(1);
 
     ctx = { bot, user, userID, channelID, cmd, args, evt };
 
+    cmd = cmd.toLowerCase();
     if (cmd === "ping") ping(ctx);
     if (cmd === "pong") pong(ctx);
     if (cmd === "bo") bo(ctx);
     if (cmd === "ba") ba(ctx);
     if (cmd === "cf") codeforces(ctx);
     if (cmd === "v") version(ctx);
-
   }
 });
