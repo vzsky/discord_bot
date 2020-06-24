@@ -1,5 +1,5 @@
 const { bot, logger } = require("./setup");
-const { ping, pong, bo, ba } = require("./basic");
+const { ping, pong, bo, ba, version } = require("./basic");
 const { codeforces } = require("./codeforces");
 
 const CMD = "!";
@@ -19,5 +19,7 @@ bot.on("message", (user, userID, channelID, message, evt) => {
     if (cmd === "bo") bo(ctx);
     if (cmd === "ba") ba(ctx);
     if (cmd === "cf") codeforces(ctx);
+    if (cmd === "v") version(ctx);
+
   }
 });

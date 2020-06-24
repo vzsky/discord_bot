@@ -29,9 +29,12 @@ const pong = (ctx) => {
 const bo = messageSenderGenerator("Ba!");
 const ba = messageSenderGenerator("Bo!");
 
+const version = messageSenderGenerator("21:45 | 24 June 2020 | ItzMeOwww");
+
 module.exports = {
   ping,
   pong,
   bo,
   ba,
+  version,
 };
