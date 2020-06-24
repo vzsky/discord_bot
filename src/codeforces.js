@@ -19,10 +19,13 @@ const config = async (ctx) => {
 };
 
 const help = (ctx) => {
-  sendMessage("codeforces commands", ctx);
-  sendMessage("config [handle]", ctx);
-  sendMessage("help", ctx);
-  sendMessage("rating", ctx);
+  msg = `
+codeforces commands
+- config [handle]
+- help
+- rating
+  `;
+  sendMessage(msg, ctx);
 };
 
 const rating = async (ctx) => {
