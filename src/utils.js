@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 const sendMessage = (msg, ctx) => {
   ctx.bot.sendMessage({
     to: ctx.channelID,
@@ -11,7 +13,18 @@ const messageSenderGenerator = (message) => {
   };
 };
 
+const getapi = async (path) => {
+  try {
+    let res = await fetch(path);
+    let json = await res.json();
+    return json;
+  } catch (e) {
+    return;
+  }
+};
+
 module.exports = {
   sendMessage,
   messageSenderGenerator,
+  getapi,
 };
