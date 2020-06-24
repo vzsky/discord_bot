@@ -1,6 +1,5 @@
 const Discord = require("discord.io");
 const winston = require("winston");
-const config = require("../config.json");
 
 const logger = winston.createLogger({
   level: "info",
@@ -12,7 +11,7 @@ const logger = winston.createLogger({
 });
 
 const bot = new Discord.Client({
-  token: config.token,
+  token: process.env.BOT_TOKEN,
   autorun: true,
 });
 
