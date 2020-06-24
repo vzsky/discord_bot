@@ -29,4 +29,6 @@ const ba = (bot, channel) => {
 module.exports = {
   ping: ping,
   pong: pong,
+  bo: bo,
+  ba: ba,
 };
