@@ -20,6 +20,5 @@ bot.on("message", (user, userID, channelID, message, evt) => {
     if (cmd === "ba") ba(ctx);
     if (cmd === "cf") codeforces(ctx);
     if (cmd === "v") version(ctx);
-
   }
 });

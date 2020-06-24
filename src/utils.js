@@ -1,6 +1,6 @@
 const sendMessage = (msg, ctx) => {
   ctx.bot.sendMessage({
-    to: ctx.channel,
+    to: ctx.channelID,
     message: msg,
   });
 };

@@ -9,7 +9,7 @@ const codeforces = (ctx) => {
 const config = async (ctx) => {
   let handle = ctx.args[1];
   await User.updateOne(
-    { userID: ctx.userid },
+    { userID: ctx.userID },
     { codeforcesID: handle },
     { upsert: true }
   );
