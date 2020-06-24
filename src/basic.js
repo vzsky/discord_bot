@@ -5,6 +5,14 @@ const ping = (bot, channel) => {
   });
 };
 
+const pong = (bot, channel) => {
+  bot.sendMessage({
+    to: channel,
+    message: "Ping!",
+  });
+};
+
 module.exports = {
   ping: ping,
+  pong: pong,
 };
