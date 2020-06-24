@@ -1,11 +1,4 @@
-const messageSenderGenerator = (message) => {
-  return (bot, channel) => {
-    bot.sendMessage({
-      to: channel,
-      message: message,
-    });
-  };
-};
+const { sendMessage, messageSenderGenerator } = require("./utils");
 
 const formatTxt = (txt, msg) => {
   let message = msg;
@@ -23,21 +16,14 @@ const formatTxt = (txt, msg) => {
   return new_msg;
 };
 
-const sendMessage = (message, bot, channel) => {
-  bot.sendMessage({
-    to: channel,
-    message: message,
-  });
-};
-
-const ping = (txt, bot, channel) => {
+const ping = (ctx) => {
   message = "Pong!";
-  sendMessage(formatTxt(txt, message), bot, channel);
+  sendMessage(formatTxt(ctx.cmd, message), ctx);
 };
 
-const pong = (txt, bot, channel) => {
+const pong = (ctx) => {
   message = "Ping!";
-  sendMessage(formatTxt(txt, message), bot, channel);
+  sendMessage(formatTxt(ctx.cmd, message), ctx);
 };
 
 const bo = messageSenderGenerator("Ba!");
@@ -46,9 +32,9 @@ const ba = messageSenderGenerator("Bo!");
 const version = messageSenderGenerator("21:45 | 24 June 2020 | ItzMeOwww");
 
 module.exports = {
-  ping: ping,
-  pong: pong,
-  bo: bo,
-  ba: ba,
-  version: version,
+  ping,
+  pong,
+  bo,
+  ba,
+  version,
 };
