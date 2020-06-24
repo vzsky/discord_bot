@@ -11,7 +11,7 @@ bot.on("message", (user, userID, channelID, message, evt) => {
     args = args.splice(1);
 
     if (cmd === "ping") ping(bot, channelID);
-    if (cmd === "pong") pong(bot, channelID);
+    if (cmd.toLowerCase() === "pong") pong(bot, channelID);
     if (cmd === "bo")   bo(bot, channelID);
     if (cmd === "ba")   ba(bot, channelID);
   }
