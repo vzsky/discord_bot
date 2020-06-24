@@ -1,5 +1,5 @@
 const { bot, logger } = require("./setup");
-const { ping } = require("./basic");
+const { ping, pong, bo, ba } = require("./basic");
 
 const CMD = "!";
 
