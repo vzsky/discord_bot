@@ -1,38 +1,31 @@
-const ping = (txt, bot, channel) => {
-  message = "Pong!";
-  for (var i = 0; i < txt.length; i++) {
-    txt[i].isUpperCase() ? message[i].toUpperCase() : message[i].toLowerCase();
-  }
+const messageSenderGenerator = (message) => {
+  return (bot, channel) => {
+    bot.sendMessage({
+      to: channel,
+      message: message,
+    });
+  };
+};
+
+const sendMessage = (message, bot, channel) => {
   bot.sendMessage({
     to: channel,
     message: message,
   });
+};
+
+const ping = (txt, bot, channel) => {
+  message = "Pong!";
+  sendMessage(message, bot, channel);
 };
 
 const pong = (txt, bot, channel) => {
   message = "Ping!";
-  for (var i = 0; i < txt.length; i++) {
-    txt[i].isUpperCase() ? message[i].toUpperCase() : message[i].toLowerCase();
-  }
-  bot.sendMessage({
-    to: channel,
-    message: message,
-  });
+  sendMessage(message, bot, channel);
 };
 
-const bo = (bot, channel) => {
-  bot.sendMessage({
-    to: channel,
-    message: "Ba!",
-  });
-};
-
-const ba = (bot, channel) => {
-  bot.sendMessage({
-    to: channel,
-    message: "Bo!",
-  });
-};
+const bo = messageSenderGenerator("Ba!");
+const ba = messageSenderGenerator("Bo!");
 
 module.exports = {
   ping: ping,
