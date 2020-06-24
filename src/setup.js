@@ -1,5 +1,6 @@
 const Discord = require("discord.io");
 const winston = require("winston");
+const mongoose = require("mongoose");
 
 require("dotenv").config();
 
@@ -12,6 +13,12 @@ const logger = winston.createLogger({
   ],
 });
 
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+  })
+  .then(() => console.log("connected to mongodb"));
+
 const bot = new Discord.Client({
   token: process.env.TOKEN,
   autorun: true,
@@ -22,6 +29,6 @@ bot.on("ready", (evt) => {
 });
 
 module.exports = {
-  bot: bot,
-  logger: logger,
+  bot,
+  logger,
 };
