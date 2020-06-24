@@ -12,6 +12,20 @@ const pong = (bot, channel) => {
   });
 };
 
+const bo = (bot, channel) => {
+  bot.sendMessage({
+    to: channel,
+    message: "Ba!",
+  });
+};
+
+const ba = (bot, channel) => {
+  bot.sendMessage({
+    to: channel,
+    message: "Bo!",
+  });
+};
+
 module.exports = {
   ping: ping,
   pong: pong,
