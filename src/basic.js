@@ -1,35 +1,21 @@
-const messageSenderGenerator = (message) => {
-  return (bot, channel) => {
-    bot.sendMessage({
-      to: channel,
-      message: message,
-    });
-  };
-};
+const { sendMessage, messageSenderGenerator } = require("./utils");
 
-const sendMessage = (message, bot, channel) => {
-  bot.sendMessage({
-    to: channel,
-    message: message,
-  });
-};
-
-const ping = (txt, bot, channel) => {
+const ping = (ctx) => {
   message = "Pong!";
-  sendMessage(message, bot, channel);
+  sendMessage(message, ctx);
 };
 
-const pong = (txt, bot, channel) => {
+const pong = (ctx) => {
   message = "Ping!";
-  sendMessage(message, bot, channel);
+  sendMessage(message, ctx);
 };
 
 const bo = messageSenderGenerator("Ba!");
 const ba = messageSenderGenerator("Bo!");
 
 module.exports = {
-  ping: ping,
-  pong: pong,
-  bo: bo,
-  ba: ba,
+  ping,
+  pong,
+  bo,
+  ba,
 };
