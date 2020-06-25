@@ -1,16 +1,13 @@
 const fetch = require("node-fetch");
 const { logger } = require("./setup");
 
-const sendMessage = (msg, ctx) => {
-  ctx.bot.sendMessage({
-    to: ctx.channelID,
-    message: msg,
-  });
+const botReply = (msg, reply) => {
+  msg.channel.send(reply);
 };
 
-const messageSenderGenerator = (message) => {
-  return (ctx) => {
-    sendMessage(message, ctx);
+const messageReplyGenerator = (reply) => {
+  return (message) => {
+    botReply(message, reply);
   };
 };
 
@@ -24,18 +21,8 @@ const getapi = async (path) => {
   }
 };
 
-const roleSetter = (bot, serverid, roleid) => {
-  bot.addToRole(
-    { serverID: serverid, userID: callback.id, roleID: roleid },
-    (err) => {
-      if (err) logger.error(err);
-    }
-  );
-};
-
 module.exports = {
-  sendMessage,
-  messageSenderGenerator,
+  botReply,
+  messageReplyGenerator,
   getapi,
-  roleSetter,
 };

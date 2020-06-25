@@ -1,14 +1,15 @@
 const { bot, logger } = require("./setup");
-const { ping, pong, bo, ba, version, tableflip } = require("./basic");
+const { ping, pong, bo, ba, version, tableflip } = require("../basic");
 const cfcommand = require("./codeforces");
-const { messageSenderGenerator } = require("./utils");
+const { messageReplyGenerator } = require("./utils");
 
 const CMD = "!";
-const idiot = messageSenderGenerator("Read help first u fuking IDIOT!");
+const idiot = messageReplyGenerator("Read help first u fuking IDIOT!");
 
-const codeforces = (ctx) => {
-  let cmd = ctx.args[0];
-  cfcommand[cmd] == null ? idiot(ctx) : cfcommand[cmd](ctx);
+const codeforces = (msg) => {
+  let cmd = msg.args[0];
+  console.log(cmd);
+  cfcommand[cmd] == null ? idiot(msg) : cfcommand[cmd](msg);
 };
 
 const commands = {
@@ -18,20 +19,21 @@ const commands = {
   ba,
   version,
   tableflip,
-  codeforces,
+  cf: codeforces,
 };
 
-bot.on("message", (user, userID, channelID, message, evt) => {
-  if (message.substring(0, 1) == CMD) {
-    logger.info(user + "#" + userID + " said " + message);
+bot.on("message", (msg) => {
+  if (msg.content.substring(0, 1) == CMD) {
+    logger.info(
+      msg.author.username + "#" + msg.author.id + " said " + msg.content
+    );
 
-    var args = message.substring(1).split(" ");
+    var args = msg.content.substring(1).split(" ");
     var cmd = args[0];
     args = args.splice(1);
 
-    ctx = { bot, user, userID, channelID, cmd, args, evt };
-
+    msg.args = args;
     cmd = cmd.toLowerCase();
-    commands[cmd] == null ? idiot(ctx) : commands[cmd](ctx);
+    commands[cmd] == null ? idiot(msg) : commands[cmd](msg);
   }
 });

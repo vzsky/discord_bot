@@ -1,38 +1,36 @@
 const { User } = require("./model");
-const { sendMessage, getapi } = require("./utils");
+const { getapi, botReply, messageReplyGenerator } = require("./utils");
 
-const config = async (ctx) => {
-  let handle = ctx.args[1];
+const config = async (msg) => {
+  let handle = msg.args[1];
   await User.updateOne(
-    { userID: ctx.userID },
+    { userID: msg.author.id },
     { codeforcesID: handle },
     { upsert: true }
   );
-  sendMessage("done!", ctx);
+  botReply(msg, "done!");
 };
 
-const help = (ctx) => {
-  msg = `
+const rating = async (msg) => {
+  let user = await User.findOne({ userID: msg.author.id });
+  if (!user) return botReply(msg, "Config First!!!");
+  let handle = user.codeforcesID;
+  let res = await getapi(
+    "https://codeforces.com/api/user.rating?handle=" + handle
+  );
+  if (!res) return botReply(msg, "Nah");
+  let rate = res.result[res.result.length - 1].newRating;
+  botReply(msg, "Congrats " + handle + ", ur rating is " + rate);
+};
+
+let helpmsg = `
 codeforces commands
 - config [handle]
 - help
 - rating
   `;
-  sendMessage(msg, ctx);
-};
 
-const rating = async (ctx) => {
-  let user = await User.findOne({ userID: ctx.userID });
-  if (!user) return sendMessage("Config first!!!", ctx);
-  let handle = user.codeforcesID;
-  let res = await getapi(
-    "https://codeforces.com/api/user.rating?handle=" + handle
-  );
-  if (!res) return sendMessage("Nah", ctx);
-  let rate = res.result[res.result.length - 1].newRating;
-  let msg = "Congrats " + ctx.user + ", ur rating is " + rate;
-  sendMessage(msg, ctx);
-};
+const help = messageReplyGenerator(helpmsg);
 
 module.exports = {
   config,
