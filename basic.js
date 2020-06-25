@@ -19,12 +19,12 @@ const formatTxt = (txt, msg) => {
 
 const ping = (msg) => {
   message = "Pong!";
-  botReply(msg, formatTxt(ctx.cmd, message));
+  botReply(msg, formatTxt(msg.cmd[0], message));
 };
 
 const pong = (msg) => {
   message = "Ping!";
-  botReply(msg, formatTxt(ctx.cmd, message));
+  botReply(msg, formatTxt(msg.cmd[0], message));
 };
 
 const bo = messageReplyGenerator("Ba!");

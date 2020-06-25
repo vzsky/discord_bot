@@ -2,7 +2,7 @@ const { User } = require("./model");
 const { getapi, botReply, messageReplyGenerator } = require("./utils");
 
 const config = async (msg) => {
-  let handle = msg.args[1];
+  let handle = msg.cmd[1];
   await User.updateOne(
     { userID: msg.author.id },
     { codeforcesID: handle },

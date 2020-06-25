@@ -7,7 +7,7 @@ const CMD = "!";
 const idiot = messageReplyGenerator("Read help first u fuking IDIOT!");
 
 const codeforces = (msg) => {
-  let cmd = msg.args[0];
+  let cmd = msg.cmd[1];
   console.log(cmd);
   cfcommand[cmd] == null ? idiot(msg) : cfcommand[cmd](msg);
 };
@@ -28,12 +28,9 @@ bot.on("message", (msg) => {
       msg.author.username + "#" + msg.author.id + " said " + msg.content
     );
 
-    var args = msg.content.substring(1).split(" ");
-    var cmd = args[0];
-    args = args.splice(1);
-
-    msg.args = args;
-    cmd = cmd.toLowerCase();
+    let args = msg.content.substring(1).split(" ");
+    msg.cmd = args;
+    let cmd = args[0].toLowerCase();
     commands[cmd] == null ? idiot(msg) : commands[cmd](msg);
   }
 });
