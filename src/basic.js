@@ -28,8 +28,8 @@ const pong = (ctx) => {
 
 const bo = messageSenderGenerator("Ba!");
 const ba = messageSenderGenerator("Bo!");
-
-const version = messageSenderGenerator("21:45 | 24 June 2020 | ItzMeOwww");
+const tableflip = messageSenderGenerator("(╯°□°）╯︵ ┻━┻");
+const version = messageSenderGenerator("10:20 | 2ถ June 2020 | my99n eiei");
 
 module.exports = {
   ping,
@@ -37,4 +37,6 @@ module.exports = {
   bo,
   ba,
   version,
+  tableflip,
+
 };

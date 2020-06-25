@@ -1,13 +1,6 @@
 const { User } = require("./model");
 const { sendMessage, getapi } = require("./utils");
 
-const codeforces = (ctx) => {
-  let cmd = ctx.args[0];
-  if (cmd == "config") config(ctx);
-  if (cmd == "help") help(ctx);
-  if (cmd == "rating") rating(ctx);
-};
-
 const config = async (ctx) => {
   let handle = ctx.args[1];
   await User.updateOne(
@@ -42,5 +35,7 @@ const rating = async (ctx) => {
 };
 
 module.exports = {
-  codeforces,
+  config,
+  help,
+  rating,
 };
