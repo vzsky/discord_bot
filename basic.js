@@ -30,7 +30,8 @@ const pong = (msg) => {
 const bo = messageReplyGenerator("Ba!");
 const ba = messageReplyGenerator("Bo!");
 const tableflip = messageReplyGenerator("(╯°□°）╯︵ ┻━┻");
-const version = messageReplyGenerator("12:00 | 25 June 2020 | my99n eiei");
+const help = messageReplyGenerator("!help : help\n");
+const version = messageReplyGenerator("15:57 | 26 June 2020 | ItzMeOwww");
 
 module.exports = {
   ping,
@@ -39,4 +40,5 @@ module.exports = {
   ba,
   version,
   tableflip,
+  help,
 };
