@@ -21,8 +21,13 @@ const getapi = async (path) => {
   }
 };
 
+const randList = (theList) => {
+  return theList[Math.floor(Math.random() * theList.length)];
+};
+
 module.exports = {
   botReply,
   messageReplyGenerator,
   getapi,
+  randList,
 };

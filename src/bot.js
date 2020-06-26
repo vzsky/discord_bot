@@ -1,5 +1,14 @@
 const { bot, logger } = require("./setup");
-const { ping, pong, bo, ba, version, tableflip, help } = require("../basic");
+const {
+  ping,
+  pong,
+  bo,
+  ba,
+  version,
+  tableflip,
+  help,
+  rollDice,
+} = require("../basic");
 const cfcommand = require("./codeforces");
 const { messageReplyGenerator } = require("./utils");
 
@@ -21,6 +30,7 @@ const commands = {
   tableflip,
   cf: codeforces,
   help,
+  dice: rollDice,
 };
 
 bot.on("message", (msg) => {

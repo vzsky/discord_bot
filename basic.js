@@ -1,4 +1,4 @@
-const { botReply, messageReplyGenerator } = require("./src/utils");
+const { botReply, messageReplyGenerator, randList } = require("./src/utils");
 const { bot } = require("./src/setup");
 
 const formatTxt = (txt, msg) => {
@@ -17,6 +17,11 @@ const formatTxt = (txt, msg) => {
   return new_msg;
 };
 
+const rollDice = () => {
+  const faces = ["⚀ : 1!", "⚁ : 2!", "⚂ : 3!", "⚃ : 4!", "⚄ : 5!", "⚅ : 6!"];
+  botReply(msg, randList(faces));
+};
+
 const ping = (msg) => {
   message = "Pong!";
   botReply(msg, formatTxt(msg.cmd[0], message));
@@ -31,9 +36,10 @@ const bo = messageReplyGenerator("Ba!");
 const ba = messageReplyGenerator("Bo!");
 const tableflip = messageReplyGenerator("(╯°□°）╯︵ ┻━┻");
 const help = messageReplyGenerator(
-  "use ! as prefix\nhelp : help\nversion : version\ncf help : codeforces"
+  "use ! as prefix\n- help : help\n- version : version\n- cf help : codeforces\n- dice : roll a dice"
 );
-const version = messageReplyGenerator("15:57 | 26 June 2020 | ItzMeOwww");
+
+const version = messageReplyGenerator("19:05 | 26 June 2020 | ItzMeOwww");
 
 module.exports = {
   ping,
@@ -43,4 +49,5 @@ module.exports = {
   version,
   tableflip,
   help,
+  rollDice,
 };

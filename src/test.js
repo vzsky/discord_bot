@@ -1,9 +1,6 @@
-const readline = require("readline").createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const { randList } = require("./utils");
 
-readline.question("Input : ", (inp) => {
-  //DO SOMETHING
-  readline.close();
-});
+// readline.question("Input : ", (inp) => {
+//   //DO SOMETHING
+//   readline.close();
+// });
