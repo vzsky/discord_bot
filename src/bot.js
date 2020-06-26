@@ -8,6 +8,7 @@ const {
   tableflip,
   help,
   rollDice,
+  pick,
 } = require("../basic");
 const cfcommand = require("./codeforces");
 const { messageReplyGenerator } = require("./utils");
@@ -31,6 +32,7 @@ const commands = {
   cf: codeforces,
   help,
   dice: rollDice,
+  pick: pick,
 };
 
 bot.on("message", (msg) => {

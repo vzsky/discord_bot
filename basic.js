@@ -22,6 +22,11 @@ const rollDice = (msg) => {
   botReply(msg, randList(faces));
 };
 
+const pick = (msg) => {
+  const theList = msg.content.substring(6).split(",");
+  botReply(msg, "Result is : " + str(randList(theList)));
+};
+
 const ping = (msg) => {
   message = "Pong!";
   botReply(msg, formatTxt(msg.cmd[0], message));
@@ -36,10 +41,10 @@ const bo = messageReplyGenerator("Ba!");
 const ba = messageReplyGenerator("Bo!");
 const tableflip = messageReplyGenerator("(╯°□°）╯︵ ┻━┻");
 const help = messageReplyGenerator(
-  "use ! as prefix\n- help : help\n- version : version\n- cf help : codeforces\n- dice : roll a dice"
+  "use ! as prefix\n- help : help\n- version : version\n- cf help : codeforces\n- dice : roll a dice\n- pick [], [], ..."
 );
 
-const version = messageReplyGenerator("19:05 | 26 June 2020 | ItzMeOwww");
+const version = messageReplyGenerator("19:39 | 26 June 2020 | ItzMeOwww");
 
 module.exports = {
   ping,
@@ -50,4 +55,5 @@ module.exports = {
   tableflip,
   help,
   rollDice,
+  pick,
 };
