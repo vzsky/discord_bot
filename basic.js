@@ -24,7 +24,7 @@ const rollDice = (msg) => {
 
 const pick = (msg) => {
   const theList = msg.content.substring(6).split(",");
-  botReply(msg, "Result is : " + str(randList(theList)));
+  botReply(msg, "Result is : " + randList(theList));
 };
 
 const ping = (msg) => {
