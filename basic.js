@@ -30,7 +30,9 @@ const pong = (msg) => {
 const bo = messageReplyGenerator("Ba!");
 const ba = messageReplyGenerator("Bo!");
 const tableflip = messageReplyGenerator("(╯°□°）╯︵ ┻━┻");
-const help = messageReplyGenerator("!help : help\n");
+const help = messageReplyGenerator(
+  "use ! as prefix\nhelp : help\nversion : version\ncf help : codeforces"
+);
 const version = messageReplyGenerator("15:57 | 26 June 2020 | ItzMeOwww");
 
 module.exports = {
