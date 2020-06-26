@@ -1,25 +1,36 @@
 const { bot, logger } = require("./setup");
-const { ping, pong, bo, ba, version } = require("./basic");
-const { codeforces } = require("./codeforces");
+const { ping, pong, bo, ba, version, tableflip } = require("../basic");
+const cfcommand = require("./codeforces");
+const { messageReplyGenerator } = require("./utils");
 
 const CMD = "!";
+const idiot = messageReplyGenerator("Read help first u fuking IDIOT!");
 
-bot.on("message", (user, userID, channelID, message, evt) => {
-  if (message.substring(0, 1) == CMD) {
-    logger.info(user + "#" + userID + " said " + message);
+const codeforces = (msg) => {
+  let cmd = msg.cmd[1];
+  console.log(cmd);
+  cfcommand[cmd] == null ? idiot(msg) : cfcommand[cmd](msg);
+};
 
-    var args = message.substring(1).split(" ");
-    var cmd = args[0];
-    args = args.splice(1);
+const commands = {
+  ping,
+  pong,
+  bo,
+  ba,
+  version,
+  tableflip,
+  cf: codeforces,
+};
 
-    ctx = { bot, user, userID, channelID, cmd, args, evt };
+bot.on("message", (msg) => {
+  if (msg.content.substring(0, 1) == CMD) {
+    logger.info(
+      msg.author.username + "#" + msg.author.id + " said " + msg.content
+    );
 
-    cmd = cmd.toLowerCase();
-    if (cmd === "ping") ping(ctx);
-    if (cmd === "pong") pong(ctx);
-    if (cmd === "bo") bo(ctx);
-    if (cmd === "ba") ba(ctx);
-    if (cmd === "cf") codeforces(ctx);
-    if (cmd === "v") version(ctx);
+    let args = msg.content.substring(1).split(" ");
+    msg.cmd = args;
+    let cmd = args[0].toLowerCase();
+    commands[cmd] == null ? idiot(msg) : commands[cmd](msg);
   }
 });

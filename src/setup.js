@@ -1,4 +1,4 @@
-const Discord = require("discord.io");
+const Discord = require("discord.js");
 const winston = require("winston");
 const mongoose = require("mongoose");
 
@@ -19,14 +19,13 @@ mongoose
   })
   .then(() => console.log("connected to mongodb"));
 
-const bot = new Discord.Client({
-  token: process.env.TOKEN,
-  autorun: true,
+const bot = new Discord.Client();
+
+bot.on("ready", () => {
+  console.log("Connected!");
 });
 
-bot.on("ready", (evt) => {
-  logger.info("Connected" + bot.username + " - (" + bot.id + ")");
-});
+bot.login(process.env.TOKEN);
 
 module.exports = {
   bot,

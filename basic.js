@@ -1,4 +1,5 @@
-const { sendMessage, messageSenderGenerator } = require("./utils");
+const { botReply, messageReplyGenerator } = require("./src/utils");
+const { bot } = require("./src/setup");
 
 const formatTxt = (txt, msg) => {
   let message = msg;
@@ -16,20 +17,20 @@ const formatTxt = (txt, msg) => {
   return new_msg;
 };
 
-const ping = (ctx) => {
+const ping = (msg) => {
   message = "Pong!";
-  sendMessage(formatTxt(ctx.cmd, message), ctx);
+  botReply(msg, formatTxt(msg.cmd[0], message));
 };
 
-const pong = (ctx) => {
+const pong = (msg) => {
   message = "Ping!";
-  sendMessage(formatTxt(ctx.cmd, message), ctx);
+  botReply(msg, formatTxt(msg.cmd[0], message));
 };
 
-const bo = messageSenderGenerator("Ba!");
-const ba = messageSenderGenerator("Bo!");
-
-const version = messageSenderGenerator("21:45 | 24 June 2020 | ItzMeOwww");
+const bo = messageReplyGenerator("Ba!");
+const ba = messageReplyGenerator("Bo!");
+const tableflip = messageReplyGenerator("(╯°□°）╯︵ ┻━┻");
+const version = messageReplyGenerator("12:00 | 25 June 2020 | my99n eiei");
 
 module.exports = {
   ping,
@@ -37,4 +38,5 @@ module.exports = {
   bo,
   ba,
   version,
+  tableflip,
 };
