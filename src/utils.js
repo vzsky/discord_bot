@@ -35,7 +35,7 @@ const helperMessage = (help) => {
   let maxCmdLength = 0;
 
   for (let cmd of help.commands) {
-    maxCmdLength = Math.max(maxCmdLength, cmd.length);
+    maxCmdLength = Math.max(maxCmdLength, cmd.length.usage);
   }
 
   for (let h of help.commands) {
