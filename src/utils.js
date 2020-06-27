@@ -34,15 +34,15 @@ const helperMessage = (help) => {
 
   let maxCmdLength = 0;
 
-  for (let cmd of help.commands) {
-    maxCmdLength = Math.max(maxCmdLength, cmd.usage.length);
-  }
+  // for (let cmd of help.commands) {
+  //   maxCmdLength = Math.max(maxCmdLength, cmd.usage.length);
+  // }
 
   for (let h of help.commands) {
     let cmd = h.usage;
-    while (cmd.length < maxCmdLength) {
-      cmd += " ";
-    }
+    // while (cmd.length < maxCmdLength) {
+    //   cmd += " ";
+    // }
     s += "- " + cmd + " : " + h.desc + "\n";
   }
   return s;
