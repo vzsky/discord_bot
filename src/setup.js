@@ -17,12 +17,12 @@ mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
   })
-  .then(() => console.log("connected to mongodb"));
+  .then(() => logger.info("connected to mongodb"));
 
 const bot = new Discord.Client();
 
 bot.on("ready", () => {
-  console.log("Connected!");
+  logger.info("connected to discord");
 });
 
 bot.login(process.env.TOKEN);

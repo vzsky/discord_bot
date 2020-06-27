@@ -1,5 +1,4 @@
 const fetch = require("node-fetch");
-const { logger } = require("./setup");
 
 const botReply = (msg, reply) => {
   msg.channel.send(reply);
