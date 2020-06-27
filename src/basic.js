@@ -26,16 +26,8 @@ const pick = (msg) => {
   botReply(msg, "Result is : " + randList(theList));
 };
 
-const ping = (msg) => {
-  message = "Pong!";
-  botReply(msg, formatTxt(msg.cmd[0], message));
-};
-
-const pong = (msg) => {
-  message = "Ping!";
-  botReply(msg, formatTxt(msg.cmd[0], message));
-};
-
+const ping = messageReplyGenerator("Pong!");
+const pong = messageReplyGenerator("Ping!");
 const bo = messageReplyGenerator("Ba!");
 const ba = messageReplyGenerator("Bo!");
 const tableflip = messageReplyGenerator("(╯°□°）╯︵ ┻━┻");
