@@ -26,10 +26,26 @@ const pick = (msg) => {
   botReply(msg, "Result is : " + randList(theList));
 };
 
-const ping = messageReplyGenerator("Pong!");
-const pong = messageReplyGenerator("Ping!");
-const bo = messageReplyGenerator("Ba!");
-const ba = messageReplyGenerator("Bo!");
+const ping = (msg) => {
+  message = "Pong!";
+  botReply(msg, formatTxt(msg.cmd[0], message));
+};
+
+const pong = (msg) => {
+  message = "Ping!";
+  botReply(msg, formatTxt(msg.cmd[0], message));
+};
+
+const bo = (msg) => {
+  message = "Ba!";
+  botReply(msg, formatTxt(msg.cmd[0], message));
+};
+
+const ba = (msg) => {
+  message = "Bo!";
+  botReply(msg, formatTxt(msg.cmd[0], message));
+};
+
 const tableflip = messageReplyGenerator("(╯°□°）╯︵ ┻━┻");
 const version = messageReplyGenerator("19:39 | 26 June 2020 | ItzMeOwww");
 
