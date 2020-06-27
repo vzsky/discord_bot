@@ -63,4 +63,5 @@ module.exports = {
   tableflip,
   rollDice,
   pick,
+  quote,
 };
