@@ -11,7 +11,7 @@ const {
 const cfcommand = require("./codeforces");
 const { messageReplyGenerator, helperMessage } = require("./utils");
 
-const idiot = messageReplyGenerator("Implement it first u fuking IDIOT!");
+const idiot = messageReplyGenerator("Implement it first u f*cking IDIOT!");
 
 const codeforces = (msg) => {
   let cmd = msg.cmd[1];
