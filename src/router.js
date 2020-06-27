@@ -7,6 +7,7 @@ const {
   tableflip,
   rollDice,
   pick,
+  quote,
 } = require("./basic");
 const cfcommand = require("./codeforces");
 const { messageReplyGenerator, helperMessage } = require("./utils");
@@ -43,4 +44,5 @@ module.exports = {
   dice: rollDice,
   pick,
   idiot,
+  quote,
 };
