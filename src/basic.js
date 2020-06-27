@@ -1,5 +1,4 @@
-const { botReply, messageReplyGenerator, randList } = require("./src/utils");
-const { bot } = require("./src/setup");
+const { botReply, messageReplyGenerator, randList } = require("./utils");
 
 const formatTxt = (txt, msg) => {
   let message = msg;
@@ -23,7 +22,7 @@ const rollDice = (msg) => {
 };
 
 const pick = (msg) => {
-  const theList = msg.content.substring(6).split(",");
+  const theList = msg.cmd[1].split(",");
   botReply(msg, "Result is : " + randList(theList));
 };
 
@@ -40,10 +39,6 @@ const pong = (msg) => {
 const bo = messageReplyGenerator("Ba!");
 const ba = messageReplyGenerator("Bo!");
 const tableflip = messageReplyGenerator("(╯°□°）╯︵ ┻━┻");
-const help = messageReplyGenerator(
-  "use ! as prefix\n- help : help\n- version : version\n- cf help : codeforces\n- dice : roll a dice\n- pick [], [], ..."
-);
-
 const version = messageReplyGenerator("19:39 | 26 June 2020 | ItzMeOwww");
 
 module.exports = {
@@ -53,7 +48,6 @@ module.exports = {
   ba,
   version,
   tableflip,
-  help,
   rollDice,
   pick,
 };

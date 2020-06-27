@@ -1,5 +1,10 @@
 const { User } = require("./model");
-const { getapi, botReply, messageReplyGenerator } = require("./utils");
+const {
+  getapi,
+  botReply,
+  messageReplyGenerator,
+  helperMessage,
+} = require("./utils");
 
 const config = async (msg) => {
   let handle = msg.cmd[1];
@@ -23,14 +28,16 @@ const rating = async (msg) => {
   botReply(msg, "Congrats " + handle + ", ur rating is " + rate);
 };
 
-let helpmsg = `
-codeforces commands
-- config [handle]
-- help
-- rating
-  `;
+let helpcmd = {
+  type: "subcommands",
+  headers: ["codeforces command", "USAGE : cf [subcommand]"],
+  commands: [
+    { usage: "config [cfhandle]", desc: "config handle with discord id" },
+    { usage: "rating", desc: "display cf rating" },
+  ],
+};
 
-const help = messageReplyGenerator(helpmsg);
+const help = messageReplyGenerator(helperMessage(helpcmd));
 
 module.exports = {
   config,

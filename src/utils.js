@@ -25,9 +25,23 @@ const randList = (theList) => {
   return theList[Math.floor(Math.random() * theList.length)];
 };
 
+const helperMessage = (help) => {
+  s = "";
+  for (let h of help.headers) {
+    s += h + "\n";
+  }
+  s += "\n";
+  s += help.type + " are\n";
+  for (let h of help.commands) {
+    s += "- " + h.usage + " : " + h.desc + "\n";
+  }
+  return s;
+};
+
 module.exports = {
   botReply,
   messageReplyGenerator,
   getapi,
   randList,
+  helperMessage,
 };

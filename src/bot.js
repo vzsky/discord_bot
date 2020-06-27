@@ -6,21 +6,33 @@ const {
   ba,
   version,
   tableflip,
-  help,
   rollDice,
   pick,
-} = require("../basic");
+} = require("./basic");
 const cfcommand = require("./codeforces");
-const { messageReplyGenerator } = require("./utils");
+const { messageReplyGenerator, helperMessage } = require("./utils");
 
 const CMD = "!";
-const idiot = messageReplyGenerator("Read help first u fuking IDIOT!");
+const idiot = messageReplyGenerator("Implement it first u fuking IDIOT!");
 
 const codeforces = (msg) => {
   let cmd = msg.cmd[1];
   console.log(cmd);
   cfcommand[cmd] == null ? idiot(msg) : cfcommand[cmd](msg);
 };
+
+const helpcmd = {
+  headers: ["use ! as prefix"],
+  type: ["all main commands"],
+  commands: [
+    { usage: "version", desc: "display manually updated version" },
+    { usage: "cf [subcommand]", desc: "codeforces commands" },
+    { usage: "dice", desc: "roll a dice" },
+    { usage: "pick a,b,c", desc: "pick one from the list" },
+  ],
+};
+
+const help = messageReplyGenerator(helperMessage(helpcmd));
 
 const commands = {
   ping,
@@ -32,7 +44,7 @@ const commands = {
   cf: codeforces,
   help,
   dice: rollDice,
-  pick: pick,
+  pick,
 };
 
 bot.on("message", (msg) => {
