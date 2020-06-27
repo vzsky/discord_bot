@@ -26,7 +26,8 @@ const rating = async (msg) => {
   if (!res) return botReply(msg, "Nah");
   let rate = res.result[res.result.length - 1].rating;
   let rank = res.result[res.result.length - 1].rank;
-  botReply(msg, "Congrats " + handle + ", ur rating is " + rate + ", " + rank);
+  rank = rank.substr(0,1).toUpperCase() + rank.substr(1,rank.length - 1);
+  botReply(msg, "Congrats " + handle + ", ur rating is " + rank + " " + rate);
 };
 
 let helpcmd = {
