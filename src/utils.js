@@ -31,8 +31,19 @@ const helperMessage = (help) => {
   }
   s += "\n";
   s += help.type + " are\n";
+
+  let maxCmdLength = 0;
+
+  for (let cmd of help.commands) {
+    maxCmdLength = Math.max(maxCmdLength, cmd.length);
+  }
+
   for (let h of help.commands) {
-    s += "- " + h.usage + " : " + h.desc + "\n";
+    let cmd = h.usage;
+    while (cmd.length < maxCmdLength) {
+      cmd += " ";
+    }
+    s += "- " + cmd + " : " + h.desc + "\n";
   }
   return s;
 };
