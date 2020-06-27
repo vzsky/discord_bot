@@ -26,6 +26,11 @@ const pick = (msg) => {
   botReply(msg, "Result is : " + randList(theList));
 };
 
+const quote = (msg) => {
+  const quotes = ["quote 1 suppose to be here","quotes 2 also suppose to be here","where are all the quote"];
+  botReply(msg, randList(quotes));
+};  
+
 const ping = (msg) => {
   message = "Pong!";
   botReply(msg, formatTxt(msg.cmd[0], message));
