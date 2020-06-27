@@ -21,11 +21,12 @@ const rating = async (msg) => {
   if (!user) return botReply(msg, "Config First!!!");
   let handle = user.codeforcesID;
   let res = await getapi(
-    "https://codeforces.com/api/user.rating?handle=" + handle
+    "https://codeforces.com/api/user.info?handles=" + handle
   );
   if (!res) return botReply(msg, "Nah");
-  let rate = res.result[res.result.length - 1].newRating;
-  botReply(msg, "Congrats " + handle + ", ur rating is " + rate);
+  let rate = res.result[res.result.length - 1].rating;
+  let rank = res.result[res.result.length - 1].rank;
+  botReply(msg, "Congrats " + handle + ", ur rating is " + rate + ", " + rank);
 };
 
 let helpcmd = {
