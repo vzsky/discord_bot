@@ -9,13 +9,8 @@ const {
   quote,
   idiot,
 } = require("./basic");
-const cfcommand = require("./codeforces");
+const cf = require("./codeforces/main");
 const { messenger, helperMessage } = require("./utils");
-
-const codeforces = (msg) => {
-  let cmd = msg.cmd[1];
-  cfcommand[cmd] == null ? idiot(msg) : cfcommand[cmd](msg);
-};
 
 const helpcmd = {
   headers: ["use ! as prefix"],
@@ -36,7 +31,7 @@ module.exports = {
   bo,
   ba,
   version,
-  cf: codeforces,
+  cf,
   help,
   dice: rollDice,
   pick,
