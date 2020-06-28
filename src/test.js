@@ -31,15 +31,13 @@ const CMD = "!";
 rl.question("", (inp) => {
   msg = msgMocker(inp);
   if (!msg.author.bot && msg.content.substring(0, 1) == CMD) {
-    console.log("TEST#local said " + msg.content);
-
     let args = msg.content.substring(1).split(" ");
     msg.cmd = args;
     let cmd = args[0].toLowerCase();
 
     let run = commands[cmd];
     if (run == null) {
-      console.log("no commands");
+      console.log("no commands found");
     } else {
       run(msg);
     }

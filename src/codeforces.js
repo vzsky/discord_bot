@@ -3,20 +3,21 @@ const {
   getapi,
   botReply,
   messageReplyGenerator,
+  messenger,
   helperMessage,
 } = require("./utils");
 
-const config = async (msg) => {
+const config = messenger(async (msg) => {
   let handle = msg.cmd[1];
   await User.updateOne(
     { userID: msg.author.id },
     { codeforcesID: handle },
     { upsert: true }
   );
-  botReply(msg, "done!");
-};
+  return "done!";
+});
 
-const rating = async (msg) => {
+const rating = messenger(async (msg) => {
   let user = await User.findOne({ userID: msg.author.id });
   if (!user) return botReply(msg, "Config First!!!");
   let handle = user.codeforcesID;
@@ -26,9 +27,9 @@ const rating = async (msg) => {
   if (!res) return botReply(msg, "Nah");
   let rate = res.result[res.result.length - 1].rating;
   let rank = res.result[res.result.length - 1].rank;
-  rank = rank.substr(0,1).toUpperCase() + rank.substr(1,rank.length - 1);
-  botReply(msg, "Congrats " + handle + ", ur rating is " + rank + " " + rate);
-};
+  rank = rank.substr(0, 1).toUpperCase() + rank.substr(1, rank.length - 1);
+  return "Congrats " + handle + ", ur rating is " + rank + " " + rate;
+});
 
 let helpcmd = {
   type: "subcommands",
@@ -39,7 +40,7 @@ let helpcmd = {
   ],
 };
 
-const help = messageReplyGenerator(helperMessage(helpcmd));
+const help = messenger(() => helperMessage(helpcmd));
 
 module.exports = {
   config,

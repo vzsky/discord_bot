@@ -1,58 +1,49 @@
-const { botReply, messageReplyGenerator, randList } = require("./utils");
+const { randList, messenger } = require("./utils");
 
-const formatTxt = (txt, msg) => {
-  let message = msg;
+const config = {
+  faces: ["⚀ : 1!", "⚁ : 2!", "⚂ : 3!", "⚃ : 4!", "⚄ : 5!", "⚅ : 6!"],
+  quotes: [
+    "quote 1 suppose to be here",
+    "quotes 2 also suppose to be here",
+    "where are all the quote",
+  ],
+};
+
+const pick = messenger((msg) => {
+  return "Result is : " + randList(msg.cmd[1].split(","));
+});
+const rollDice = messenger(() => randList(config.faces));
+const quote = messenger(() => randList(config.quotes));
+
+const formatText = (txt, msg) => {
   let new_msg = "";
-  for (var i = 0; i < txt.length; i++) {
-    if (txt[i] === txt[i].toUpperCase()) {
-      new_msg += message.charAt(i).toUpperCase();
-    } else {
-      new_msg += message.charAt(i).toLowerCase();
-    }
+  for (let i = 0; i < txt.length; i++) {
+    new_msg +=
+      txt[i] === txt[i].toUpperCase()
+        ? msg[i].toUpperCase()
+        : msg[i].toLowerCase();
   }
-  for (var i = txt.length; i < message.length; i++) {
-    new_msg += message[i];
+  for (let i = txt.length; i < msg.length; i++) {
+    new_msg += msg[i];
   }
   return new_msg;
 };
 
-const rollDice = (msg) => {
-  const faces = ["⚀ : 1!", "⚁ : 2!", "⚂ : 3!", "⚃ : 4!", "⚄ : 5!", "⚅ : 6!"];
-  botReply(msg, randList(faces));
-};
+const ping = messenger((msg) => {
+  return formatText(msg.cmd[0], "Pong!");
+});
+const pong = messenger((msg) => {
+  return formatText(msg.cmd[0], "Ping!");
+});
+const bo = messenger((msg) => {
+  return formatText(msg.cmd[0], "Ba!");
+});
+const ba = messenger((msg) => {
+  return formatText(msg.cmd[0], "Bo!");
+});
 
-const pick = (msg) => {
-  const theList = msg.cmd[1].split(",");
-  botReply(msg, "Result is : " + randList(theList));
-};
-
-const quote = (msg) => {
-  const quotes = ["quote 1 suppose to be here","quotes 2 also suppose to be here","where are all the quote"];
-  botReply(msg, randList(quotes));
-};  
-
-const ping = (msg) => {
-  message = "Pong!";
-  botReply(msg, formatTxt(msg.cmd[0], message));
-};
-
-const pong = (msg) => {
-  message = "Ping!";
-  botReply(msg, formatTxt(msg.cmd[0], message));
-};
-
-const bo = (msg) => {
-  message = "Ba!";
-  botReply(msg, formatTxt(msg.cmd[0], message));
-};
-
-const ba = (msg) => {
-  message = "Bo!";
-  botReply(msg, formatTxt(msg.cmd[0], message));
-};
-
-const tableflip = messageReplyGenerator("(╯°□°）╯︵ ┻━┻");
-const version = messageReplyGenerator("19:39 | 26 June 2020 | ItzMeOwww");
+const version = messenger(() => "10:30 | 28 June 2020 | my99n");
+const idiot = messenger(() => "Implement it first u f*cking IDIOT!");
 
 module.exports = {
   ping,
@@ -60,8 +51,8 @@ module.exports = {
   bo,
   ba,
   version,
-  tableflip,
   rollDice,
   pick,
   quote,
+  idiot,
 };

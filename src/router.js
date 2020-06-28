@@ -4,15 +4,13 @@ const {
   bo,
   ba,
   version,
-  tableflip,
   rollDice,
   pick,
   quote,
+  idiot,
 } = require("./basic");
 const cfcommand = require("./codeforces");
-const { messageReplyGenerator, helperMessage } = require("./utils");
-
-const idiot = messageReplyGenerator("Implement it first u f*cking IDIOT!");
+const { messenger, helperMessage } = require("./utils");
 
 const codeforces = (msg) => {
   let cmd = msg.cmd[1];
@@ -30,7 +28,7 @@ const helpcmd = {
   ],
 };
 
-const help = messageReplyGenerator(helperMessage(helpcmd));
+const help = messenger(() => helperMessage(helpcmd));
 
 module.exports = {
   ping,
@@ -38,7 +36,6 @@ module.exports = {
   bo,
   ba,
   version,
-  tableflip,
   cf: codeforces,
   help,
   dice: rollDice,

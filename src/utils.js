@@ -1,12 +1,8 @@
 const fetch = require("node-fetch");
 
-const botReply = (msg, reply) => {
-  msg.channel.send(reply);
-};
-
-const messageReplyGenerator = (reply) => {
+const messenger = (func) => {
   return (message) => {
-    botReply(message, reply);
+    message.channel.send(func(msg));
   };
 };
 
@@ -32,25 +28,15 @@ const helperMessage = (help) => {
   s += "\n";
   s += help.type + " are\n";
 
-  let maxCmdLength = 0;
-
-  // for (let cmd of help.commands) {
-  //   maxCmdLength = Math.max(maxCmdLength, cmd.usage.length);
-  // }
-
   for (let h of help.commands) {
     let cmd = h.usage;
-    // while (cmd.length < maxCmdLength) {
-    //   cmd += " ";
-    // }
     s += "- " + cmd + " : " + h.desc + "\n";
   }
   return s;
 };
 
 module.exports = {
-  botReply,
-  messageReplyGenerator,
+  messenger,
   getapi,
   randList,
   helperMessage,
