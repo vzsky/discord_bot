@@ -2,7 +2,7 @@ const { User } = require("../model");
 const { messenger } = require("../utils");
 
 const config = messenger(async (msg) => {
-  let handle = msg.cmd[1];
+  let handle = msg.cmd[2];
   await User.updateOne(
     { userID: msg.author.id },
     { codeforcesID: handle },
