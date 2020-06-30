@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 const messenger = (func) => {
   return (message) => {
-    message.channel.send(func(msg));
+    message.channel.send(func(message));
   };
 };
 
