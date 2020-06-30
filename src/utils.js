@@ -1,8 +1,9 @@
 const fetch = require("node-fetch");
 
 const messenger = (func) => {
-  return (message) => {
-    message.channel.send(func(message));
+  return async (message) => {
+    let reply = await func(message);
+    message.channel.send(reply);
   };
 };
 

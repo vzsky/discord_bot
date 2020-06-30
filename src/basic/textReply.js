@@ -27,12 +27,9 @@ const ba = messenger((msg) => {
   return formatText(msg.cmd[0], "Bo!");
 });
 
-const version = messenger(() => "10:30 | 28 June 2020 | my99n");
-
 module.exports = {
   ping,
   pong,
   bo,
   ba,
-  version,
 };
