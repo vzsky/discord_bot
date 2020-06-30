@@ -11,7 +11,7 @@ bot.on("message", (msg) => {
     let args = msg.content.substring(1).split(" ");
     msg.cmd = args;
     let cmd = args[0].toLowerCase();
-    commands[cmd] == null ? commands.idiot(msg) : commands[cmd](msg);
+    commands[cmd] == null ? commands.def(msg) : commands[cmd](msg);
   }
 });
 

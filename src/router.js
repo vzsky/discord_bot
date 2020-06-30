@@ -7,8 +7,8 @@ const {
   rollDice,
   pick,
   quote,
-  idiot,
-} = require("./basic");
+  def,
+} = require("./basic/main");
 const cf = require("./codeforces/main");
 const { messenger, helperMessage } = require("./utils");
 
@@ -35,6 +35,6 @@ module.exports = {
   help,
   dice: rollDice,
   pick,
-  idiot,
+  def,
   quote,
 };

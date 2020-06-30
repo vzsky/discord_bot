@@ -1,5 +1,5 @@
 const { messenger, helperMessage } = require("../utils");
-const { idiot } = require("../basic");
+const { def } = require("../basic/main");
 
 const config = require("./config");
 const rating = require("./rating");
@@ -23,7 +23,7 @@ const cfcommand = {
 
 const codeforcesHandler = (msg) => {
   let cmd = msg.cmd[1];
-  cfcommand[cmd] == null ? idiot(msg) : cfcommand[cmd](msg);
+  cfcommand[cmd] == null ? def(msg) : cfcommand[cmd](msg);
 };
 
 module.exports = codeforcesHandler;
