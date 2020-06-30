@@ -17,8 +17,9 @@ const getversion = async () => {
 
 const version = messenger(async () => {
   let time = await getversion();
-  s = "as of\n";
-  s += time.format("dddd, MMMM Do YYYY, h:mm:ss a");
+  let now = moment();
+  s = "updated ";
+  s += time.from(now);
   return s;
 });
 
