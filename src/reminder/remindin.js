@@ -16,7 +16,8 @@ const remindIn = messenger([
     let time = parseTime(msg.cmd[2]);
     time = time.asMilliseconds();
     await sleep(time);
-    return "Ringggg! this reminder was set by " + msg.author.username;
+    let remindText = msg.cmd[3] || "Ringggg!";
+    return remindText + " this reminder was set by " + msg.author.username;
   },
 ]);
 
