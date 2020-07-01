@@ -1,10 +1,23 @@
 const fetch = require("node-fetch");
 
-const messenger = (func) => {
-  return async (message) => {
-    let reply = await func(message);
-    message.channel.send(reply);
-  };
+const messenger = (funcs) => {
+  if (funcs instanceof Function) {
+    return async (message) => {
+      let reply = await funcs(message);
+      message.channel.send(reply);
+    };
+  } else {
+    return async (message) => {
+      for (func of funcs) {
+        let reply = await func(message);
+        message.channel.send(reply);
+      }
+    };
+  }
+};
+
+const sleep = (ms) => {
+  return new Promise((r) => setTimeout(r, ms));
 };
 
 const getapi = async (path) => {
@@ -41,4 +54,5 @@ module.exports = {
   getapi,
   randList,
   helperMessage,
+  sleep,
 };

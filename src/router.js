@@ -1,14 +1,5 @@
-const {
-  ping,
-  pong,
-  bo,
-  ba,
-  version,
-  rollDice,
-  pick,
-  quote,
-  def,
-} = require("./basic/main");
+const basic = require("./basic/main");
+const remind = require("./reminder/main");
 const cf = require("./codeforces/main");
 const { messenger, helperMessage } = require("./utils");
 
@@ -26,15 +17,8 @@ const helpcmd = {
 const help = messenger(() => helperMessage(helpcmd));
 
 module.exports = {
-  ping,
-  pong,
-  bo,
-  ba,
-  version,
-  cf,
   help,
-  dice: rollDice,
-  pick,
-  def,
-  quote,
+  cf,
+  remind,
+  ...basic,
 };
