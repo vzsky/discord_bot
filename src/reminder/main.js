@@ -8,8 +8,9 @@ let helpcmd = {
   headers: ["reminder command", "USAGE : remind [options]"],
   commands: [
     {
-      usage: "in [time]",
-      desc: "set a reminder, [time] seconds in the future",
+      usage: "in [time] (text)",
+      desc:
+        "set a reminder, [time] seconds in the future, (text) optional text to remind",
     },
   ],
 };
