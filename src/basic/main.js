@@ -3,7 +3,7 @@ const { rollDice, pick, quote } = require("./picker");
 const { ping, pong, bo, ba, test } = require("./textReply");
 const version = require("./version");
 
-const def = messenger(() => "Implement it first u f*cking IDIOT!");
+const def = messenger(() => "Implement it first u DOOFUS!");
 
 module.exports = {
   ping,
