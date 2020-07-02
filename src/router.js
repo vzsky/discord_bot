@@ -11,7 +11,8 @@ const helpcmd = {
     { usage: "cf [subcommand]", desc: "codeforces commands" },
     { usage: "dice", desc: "roll a dice" },
     { usage: "pick a,b,c,...", desc: "pick one from the list" },
-    { usage: "remind help", desc: "for more" },
+    { usage: "remind [subcommand]", desc: "remind you in secs" },
+    { usage: "quote", desc: "give you a cool quote"},
   ],
 };
 
